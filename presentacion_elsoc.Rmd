@@ -1,0 +1,63 @@
+---
+title: "Determinantes sociales de la Salud Mental"
+subtitle: "Exploración longitudinal a los puntajes PHQ-9"
+author: "C. Delgado G."
+date: "24 Junio 2022"
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+---
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+library(tidyverse)
+library(kableExtra)
+options(knitr.table.format = "html") 
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE)
+
+style_mono_accent(
+  base_color = '#21918c',
+  header_font_google = google_font("Josefin Sans"),
+  text_font_google   = google_font("Montserrat", "300", "300i"),
+  code_font_google   = google_font("Fira Mono"),
+  extra_css = list(
+  ".small" = list("font-size" = "75%")),
+  colors = c(
+  azul = '#3b528b',
+  morado = '#440154',
+  amarillo = '#fde725',
+  verde = '#21918c',
+  white = "#FFFFFF"
+))
+```
+
+<h1>.azul[Puntajes escala PHQ-9]</h1>
+<iframe src='GRAFICOS/puntajes_gl_ola.html' width="100%" height="400" id="igraph" scrolling="no" seamless="seamless" frameBorder="0"> </iframe>
+---
+
+<h1>.azul[Proporción puntajes PHQ-9 sobre 10]</h1>
+<iframe src='GRAFICOS/puntajes_s10_ola.html' width="100%" height="400" id="igraph" scrolling="no" seamless="seamless" frameBorder="0"> </iframe>
+
+---
+
+<h1>.azul[Sospecha EDM según género]</h1>
+<iframe src='GRAFICOS/s10_sexo_ola.html' width="100%" height="400" id="igraph" scrolling="no" seamless="seamless" frameBorder="0"> </iframe>
+---
+
+<h1>.azul[Sospecha EDM según nivel educacional]</h1>
+<iframe src='GRAFICOS/s10_edu_ola.html' width="100%" height="400" id="igraph" scrolling="no" seamless="seamless" frameBorder="0"> </iframe>
+
+---
+
+<h1>.azul[Sospecha EDM según Índice de Masa Corporal]</h1>
+<iframe src='GRAFICOS/s10_imc_ola.html' width="100%" height="400" id="igraph" scrolling="no" seamless="seamless" frameBorder="0"> </iframe>
+
+---
+<h1>.azul[Sospecha EDM según frecuencia de actividad física]</h1>
+<iframe src='GRAFICOS/s10_af_ola.html' width="100%" height="400" id="igraph" scrolling="no" seamless="seamless" frameBorder="0"> </iframe>
+---
+<h1>.azul[Sospecha EDM según apoyo social percibido]</h1>
+<iframe src='GRAFICOS/s10_apoyo_ola.html' width="100%" height="400" id="igraph" scrolling="no" seamless="seamless" frameBorder="0"> </iframe>
+
