@@ -12,6 +12,8 @@ output:
 library(xaringanthemer)
 library(tidyverse)
 library(kableExtra)
+library(plotly)
+
 options(knitr.table.format = "html") 
 knitr::opts_chunk$set(echo = FALSE,
                       warning = FALSE,
@@ -31,6 +33,8 @@ style_mono_accent(
   verde = '#21918c',
   white = "#FFFFFF"
 ))
+
+muestra_1 <- readRDS("DATOS/muestra_1.RDS")
 ```
 
 <h1>.azul[Introducción]</h1>
@@ -106,6 +110,12 @@ tibble('Sintoma'=  c('Poco interés', 'Decaído(a)',
 <h1>.morado[¿Cómo modelar estos datos?]</h1>
 
 Modelos marginales vía ecuaciones generalizadas de estimación (GEE)
+---
+<h1>.morado[Correlación entre olas]</h1>
+
+<iframe src="GRAFICOS/cor_olas.html" width="100%" height="400" id="igraph" scrolling="no" seamless="seamless" frameBorder="0"> </iframe>
+
+Se muestra la correlación **.morado[tetracórica]** de los puntajes PHQ-9 sobre 10 en distintos años.
 ---
 <h1>.morado[Resultados preliminares]</h1>
 
