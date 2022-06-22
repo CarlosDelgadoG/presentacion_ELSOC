@@ -77,3 +77,14 @@ for(i in covariables){
   est_GEE(var_inter = i,preds=covariables,guardar = TRUE)
 }
 
+
+# TABLAS ------------------------------------------------------------------
+
+gee_inter_preds%>%
+  texreg::htmlreg(single.row=TRUE,
+                  custom.model.name='Modelo Aditivo',
+                  custom.coef.names=c('Intercepto','Tiempo','Mujer',
+                                      'Educ: Media','Educ: Técnica','Educ:Universitaria',
+                                      'IMC','AF: Intenso','AF: Leve',
+                                      'Apoyo: Algunas veces', 'Apoyo: Siempre o Casi siempre'))
+

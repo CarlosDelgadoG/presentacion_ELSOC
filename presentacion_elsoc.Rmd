@@ -5,7 +5,7 @@ author: "C. Delgado G."
 date: "24 Junio 2022"
 output:
   xaringan::moon_reader:
-    css: xaringan-themer.css
+    css: [xaringan-themer.css, 'estilo.css'] 
 ---
 
 ```{r xaringan-themer, include=FALSE, warning=FALSE}
@@ -13,6 +13,7 @@ library(xaringanthemer)
 library(tidyverse)
 library(kableExtra)
 library(plotly)
+library(gee)
 
 options(knitr.table.format = "html") 
 knitr::opts_chunk$set(echo = FALSE,
@@ -163,6 +164,9 @@ Se muestra la correlación **.morado[tetracórica]** de los puntajes PHQ-9 sobre
 
 Asociación entre las respuestas
 Tiempo como factor
+---
+<h1>.morado[Modelo aditivo]</h1>
 
+<iframe src= "GRAFICOS/gf_betas_aditivo.html",  width="100%" height="400" id="igraph" scrolling="no" seamless="seamless" frameBorder="0"> </iframe>
 ---
 <h1>.verde[Comentarios y conclusiones]</h1>
