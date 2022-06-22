@@ -177,7 +177,7 @@ Tiempo como factor
 <iframe src= "GRAFICOS/gf_betas_aditivo.html",  width="100%" height="400" id="igraph" scrolling="no" seamless="seamless" frameBorder="0"> </iframe>
 ---
 <h1>.morado[Interacciones con el tiempo]</h1>
-
+<iframe src= "GRAFICOS/gf_inter.html",  width="100%" height="400" id="igraph" scrolling="no" seamless="seamless" frameBorder="0"> </iframe>
 ---
 <h1>.verde[Comentarios y conclusiones]</h1>
 

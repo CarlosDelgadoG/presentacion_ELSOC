@@ -47,3 +47,61 @@ gf_betas_aditivo<-plotly::plot_ly(filter(datos, sig=='Significativo'),x=~vars,y=
 
 htmlwidgets::saveWidget(gf_betas_aditivo, "GRAFICOS/gf_betas_aditivo.html", selfcontained = F, libdir = "lib")
 
+
+
+# GRAFICO INTERACCIONES ---------------------------------------------------
+
+
+#FUNCION PARA EXTRAER INTERACCIONES
+get_inter <-function(modelo){
+  
+  coefs <- coefficients(modelo)
+  index <- grepl(x=names(coefs),pattern=':')
+  se <-sqrt(diag(modelo$robust.variance))
+  
+  
+  tabla<-  tibble('var'=gsub(x=names(coefs[index]),
+                             pattern = 'ola_num:', 
+                             replacement = ''),
+                  'beta'=coefs[index],
+                  'se'=se[index])
+  return(tabla)
+}
+
+
+
+#CARGAR MODELOS
+gee_inter_m0_sexo_fac <- readRDS("MODELOS/gee_inter_m0_sexo_fac.RDS")
+gee_inter_m01_fac <- readRDS("MODELOS/gee_inter_m01_fac.RDS")
+gee_inter_s_imc_lc <- readRDS("MODELOS/gee_inter_s_imc_lc.RDS")
+gee_inter_s04_l <- readRDS("MODELOS/gee_inter_s04_l.RDS")
+gee_inter_s12_l <- readRDS("MODELOS/gee_inter_s12_l.RDS")
+
+# LISTAR LOS MODELOS
+patron <-grep("gee_inter",names(.GlobalEnv),value=TRUE)
+lista_mods <-do.call("list",mget(patron))
+#EXTRAER INTERACCIONES DE CADA MODELO
+tabla_inter <-lapply(1:length(lista_mods), function(i){get_inter(lista_mods[[i]])})%>%
+  bind_rows()
+#PASARLOS A TABLA Y CALCULAR SIGNIFICANCIA
+tabla_inter <-tabla_inter%>%
+  mutate(error=se*qnorm(0.9),
+         sig=ifelse(abs(beta/se)> qnorm(0.9),'Significativo','No Significativo'))%>%
+  mutate(var_names=c('Mujer','AF: Intensa','AF: Suave','Apoyo: Algunas','Apoyo: Siempre','IMC',
+                     'Educ: Media','Educ: Técnica','Educ: Universitaria'))
+#GRAFICAS
+gf_inter <- plotly::plot_ly(filter(tabla_inter, sig=='Significativo'),x=~var_names,y=~beta,
+                            type = 'scatter',
+                            mode='markers',
+                            name = 'Significativo',
+                            error_y = ~list(array = error),
+                            hoverinfo='text',
+                            text=~paste(var_names,'<br>',
+                                        'Beta:',round(beta,2),'<br>',
+                                        'Error:',round(error,2),'<br>',
+                                        'Chances:', round(exp(beta),2)))%>%
+  plotly::add_trace(data=filter(tabla_inter, sig=='No Significativo'), name='No significativo',color='red')%>%
+  plotly::layout(xaxis=list(title='Covariables'),
+                 yaxis=list(title='Coeficiente Estimado'))
+
+htmlwidgets::saveWidget(gf_inter, "GRAFICOS/gf_inter.html", selfcontained = F, libdir = "lib")
