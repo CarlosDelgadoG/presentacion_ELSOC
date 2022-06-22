@@ -153,6 +153,13 @@ Alegría et.al (2019): Desempleo, empleo precario, condiciones laborales, migrac
 <h1>.morado[¿Cómo modelar estos datos?]</h1>
 
 Modelos marginales vía ecuaciones generalizadas de estimación (GEE)
+
+Un modelo marginal especifica directamente la media marginal de $y_{ij}$
+
+$$\text{logit}(Ey_{ij})=\text{logit}(P(y_{ij}=1))=\beta_0+\beta_1x_{ij}$$
+Mediante el uso de una **.morado[quasi-verosimilitud]** permite especificar una matriz de covarianza de trabajo que explica la estructura de correlación para las mediciones de una misma persona.
+
+Las elecciones más usuales es asumir alguna de las siguientes estructuras: independencia, equicorrelación, **.morado[autorregresiva]**, o no-estructurada.
 ---
 <h1>.morado[Correlación entre olas]</h1>
 
@@ -169,4 +176,13 @@ Tiempo como factor
 
 <iframe src= "GRAFICOS/gf_betas_aditivo.html",  width="100%" height="400" id="igraph" scrolling="no" seamless="seamless" frameBorder="0"> </iframe>
 ---
+<h1>.morado[Interacciones con el tiempo]</h1>
+
+---
 <h1>.verde[Comentarios y conclusiones]</h1>
+
+1) Es posible pensar la influencia del tiempo en la salud mental de distintas maneras: 
+* ¿Cómo ciertas subpoblaciones cambian sistemáticamente a lo largo del tiempo?
+* ¿Cómo ciertas subpoblaciones reaccionan de distinta manera a episodios previos de sospecha de EDM
+
+2) El gradiente social está presente en el punto inicial, quizás tienda a desaparecer con el tiempo, y puede que ocurra una *regresión a la media*.
