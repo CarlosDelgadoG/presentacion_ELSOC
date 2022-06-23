@@ -15,18 +15,20 @@ bmod$s_imc_lc <- bmod$s_imc_l- mean(bmod$s_imc_l,na.rm = TRUE)
 
 # TIEMPO ------------------------------------------------------------------
 
-gee_t_fac <-gee(s11_phq9_bin~factor(ola),
+gee_t_fac <-geeglm(s11_phq9_bin~factor(ola),
                 family = binomial,
                 id = idencuesta,
-                corstr = 'AR-M',
-                data=bmod)
+                corstr = 'ar1',
+                data=na.omit(select(muestra_1, idencuesta,ola,s11_phq9_bin)))
 
-gee_t_num <-gee(s11_phq9_bin~ola_num,
-                family = binomial,
-                id = idencuesta,
-                corstr = 'AR-M',
-                data=bmod)
+saveRDS(gee_t_fac, file = 'MODELOS/gee_t_fac.RDS')
 
+gee_t_num <-geeglm(s11_phq9_bin~ola_num,
+                   family = binomial,
+                   id = idencuesta,
+                   corstr = 'ar1',
+                   data=na.omit(select(muestra_1, idencuesta,ola_num,s11_phq9_bin)))
+saveRDS(gee_t_num, file = 'MODELOS/gee_t_num.RDS')
 
 # TIEMPO Y PREDICTORES ----------------------------------------------------
 
@@ -37,7 +39,7 @@ gee_tn_preds <-gee(s11_phq9_bin~ola_num+m0_sexo_fac+m01_fac+s_imc_lc+s04_l+s12_l
                    data=bmod)
 
 # INTERACCIONES -----------------------------------------------------------
-muestra_1 <- readRDS("DATOS/muestra_1.RDS")
+
 
 covariables <- c('ola_num',
                  'm0_sexo_fac',

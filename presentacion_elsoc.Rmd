@@ -5,7 +5,7 @@ author: "C. Delgado G."
 date: "24 Junio 2022"
 output:
   xaringan::moon_reader:
-    css: [xaringan-themer.css, 'estilo.css'] 
+    css: [xaringan-themer.css] 
 ---
 
 ```{r xaringan-themer, include=FALSE, warning=FALSE}
@@ -14,6 +14,7 @@ library(tidyverse)
 library(kableExtra)
 library(plotly)
 library(gee)
+library(geepack)
 
 options(knitr.table.format = "html") 
 knitr::opts_chunk$set(echo = FALSE,
@@ -40,14 +41,42 @@ muestra_1 <- readRDS("DATOS/muestra_1.RDS")
 
 <h1>.azul[Introducción]</h1>
 
-Sintomatología depresiva
-Modelos marginales vía GEE
-Gradiente social en salud mental ocurre longitudinalmente
+Proyecto de investigación de magíster en estadística UC
+
+Determinantes Sociales en la Salud Mental
+
+Modelos marginales vía Generalized Estimating Equations(GEE) para datos longitudinales. 
+
+
+
+.footnote[ **.azul[Palabras Clave]** Sintomatología Depresiva, GEE, Determinantes Sociales de la Salud Mental, Datos Longitudinales.]
 ---
 <h1>.verde[Depresión en Chile]</h1>
 
+La Asociación de Psiquatría de Estados Unidos (APA, 2020) define la depresión como una enfermedad que afecta a manera de sentir, pensar y actuar de las personas. 
+
+La OMS (2017) caracteriza los trastornos depresivos por sentimientos de tristeza, culpa y cansancio, pérdida de interés o placer, perturbaciones del sueño y/o apetito, poca autoestima y poca concentración.
+
+En **.verde[Chile]** Markkula et. al (2017) estimaban que la prevalencia en el país de un episodio depresivo mayor durante los últimos 12 meses llegaba al 20.5% en 2003 y 18.4% en 2010.
+
 ---
-<h1>.morado[Sobre la escala PHQ-9]</h1>
+<h1>.verde[Depresión v/s Sintomatología Depresiva]</h1>
+
+Actualmente el diagnóstico de depresión usa de referencia el manual DSM-IV, donde se caracteriza un episodio depresivo mayor (**EDM**) como una mezcla de 9 síntomas que varía en torno a su severidad y recurrencia. 
+
+Hablar de **sintomatología depresiva** en un estudio aplicado a una muestra representativa de la población, sirve como un indicador del **estrés psicosocial** por el cúal atraviesa una comunidad (Jiménez et. al, 2020), y al mismo tiempo, permite identificar desigualdades sociales en la forma de experimentar dicho malestar.
+
+---
+<h1>.verde[Motivación de la investigación]</h1>
+
+¿De qué manera los distintos contextos en los que se desenvuelven las personas afecta el punto de partida y las trayectorias en el tiempo de su sintomatología depresiva?
+
+¿En qué momento es más visible el impacto de las desigualdades sociales en salud mental?
+
+Necesitamos una herramienta para medir la sintomatología depresiva: Patient Health Questionnaire0 (**PHQ-9**). Es un instrumento pensado con el doble propósito de poder detectar un episodio depresivo mayor, y al mismo tiempo, servir como indicador de la severidad de la sintomatología depresiva de las personas (Kroenke et. al, 2001). 
+
+---
+<h1>.morado[Patient Health Questionnaire 9]</h1>
 .pull-left[
 Durante las **.morado[últimas dos semanas]:** 
 
@@ -78,30 +107,37 @@ tibble('Sintoma'=  c('Poco interés', 'Decaído(a)',
 ---
 <h1>.azul[Puntajes escala PHQ-9]</h1>
 <iframe src='GRAFICOS/puntajes_gl_ola.html' width="100%" height="400" id="igraph" scrolling="no" seamless="seamless" frameBorder="0"> </iframe>
+
+Frecuencia relativa de los puntajes globales de la escala PHQ-9 en el estudio ELSOC, para los participantes que responden **.azul[las cuatro primeras olas]**.
 ---
 
-<h1>.azul[Proporción puntajes PHQ-9 sobre 10]</h1>
+<h1>.azul[Sospecha EDM en ELSOC]</h1>
 <iframe src='GRAFICOS/puntajes_s10_ola.html' width="100%" height="400" id="igraph" scrolling="no" seamless="seamless" frameBorder="0"> </iframe>
 
+Puntajes de la escala PHQ-9 mayores o iguales a 10 son indicadores de una **.azul[sospecha de una episodio depresivo mayor]**.
 
 ---
-<h1>.verde[Determinantes sociales de la Salud I]</h1>
+<h1>.verde[Determinantes sociales de la Salud]</h1>
 
+La OMS (2010) reconoce que la salud mental es moldeada por el ambiente social, económico y físico donde se desenvuelven las personas y al mismo tiempo existen sub-poblaciones en mayor riesgo de padecer un trastorno clínico.
+
+DSM:
  ¿*Cómo es que la estructura de las sociades a través de interacciones sociales, normas e instituciones afectan la salud de una población*?
 
-Los determinates sociales de la salud son la fuerza que opera detrás de las **desigualdades en salud**. 
-
-**Gradiente social**:Indiviuos con menor estatus social están en mayor riesgo y ,menor esperanza de vida que aquellos con mejor estatus. Mayor impacto de padecer un desorden mental y mayor dificultad para acceder a un tratamiento
-
----
-<h1>.verde[Determinantes sociales de la Salud II]</h1>
-
-Silva et.al (2016): Impacto de factores sociodemográficos y económicos individuales o de área en trastornos comunes como ansiedad, depresión o consumo de sustancias: Bajo ingreso, Bajo estatus socioeconómico, desempleo. estrés financiero, discriminación percibida. A nivel **comunitario** , condiciones socioeconómicas del barrio, capital social, distribución georáfica, problemas del vecindario, y composición étnica
-
-Alegría et.al (2019): Desempleo, empleo precario, condiciones laborales, migración, esposiciones persistentes a malas condicionaes habitacionales (calefacción, hacinamiento, calidad de la dieta). Relaciones familiares positivas, estulos de cuidado, historial de abuso, apoyo social, pertenencia comunitaria
+Hablamos de **Gradiente Social** en salud para indicar que 
+las personas más desventajadas están en mayor riesgo de padecer un desórden mental y poseen más obstáculos para acceder a un tratamiento.  
 
 ---
-<h1>.verde[Determinantes sociales de la Salud III]</h1>
+<h1>.verde[Evidencia empírica DSSM]</h1>
+
+Silva et.al (2016): Investigan los factores a nivel **individual** y **comunitario** que impactan en los trastornos comunes como ansiedad, depresión o consumo de sustancias.
+Su **meta-análisis** reporta que *ingresos bajos*, *desempleo*, *estrés financiero*, *discriminación percibida*,*condiciones socioeconómicas del barrio*, *problemas entre vecinos*, y *composición étnica del barrio*, son factores que sistemáticamente son significativos en los estudios.
+
+
+Alegría et.al (2019): En su revisión de literatura de los DSSM muestran que el *desempleo*, *malas condiciones laborales*, *migración*, *exposición permanente a malas condicionales habitacionales (calefacción, hacinamiento)*, *mala alimentación*, *relaciones familiares negativas*, *historial de abuso*, *falta de apoyo social*, *falta de pertinencia comunitaria*, son factores que reaparecen en las investigaciones empíricas.
+
+---
+<h1>.verde[Agrupando los DSSM]</h1>
 
 (WHO, 2010):
 
@@ -150,14 +186,16 @@ Alegría et.al (2019): Desempleo, empleo precario, condiciones laborales, migrac
 <iframe src='GRAFICOS/s10_apoyo_ola.html' width="100%" height="400" id="igraph" scrolling="no" seamless="seamless" frameBorder="0"> </iframe>
 
 ---
-<h1>.morado[¿Cómo modelar estos datos?]</h1>
+<h1>.morado[Modelos marginales vía GEE]</h1>
 
-Modelos marginales vía ecuaciones generalizadas de estimación (GEE)
-
-Un modelo marginal especifica directamente la media marginal de $y_{ij}$
+Un modelo marginal especifica directamente (1) la media marginal de $y_{ij}$
 
 $$\text{logit}(Ey_{ij})=\text{logit}(P(y_{ij}=1))=\beta_0+\beta_1x_{ij}$$
-Mediante el uso de una **.morado[quasi-verosimilitud]** permite especificar una matriz de covarianza de trabajo que explica la estructura de correlación para las mediciones de una misma persona.
+Y (2) una estructura de asociación entre observaciones de un cluster. 
+
+Las generalized estimating equations (**.morado[GEE]**) hacen estimadores consistentes frente a errores de especificación de (2).
+
+Ocupamos una matriz de covarianza de trabajo que especifica la estructura de asociación para las mediciones de una misma persona. 
 
 Las elecciones más usuales es asumir alguna de las siguientes estructuras: independencia, equicorrelación, **.morado[autorregresiva]**, o no-estructurada.
 ---
@@ -167,10 +205,19 @@ Las elecciones más usuales es asumir alguna de las siguientes estructuras: inde
 
 Se muestra la correlación **.morado[tetracórica]** de los puntajes PHQ-9 sobre 10 en distintos años.
 ---
-<h1>.morado[Resultados preliminares]</h1>
+<h1>.morado[Tiempo como predictor]</h1>
+```{r}
+gee_t_fac <- readRDS("MODELOS/gee_t_fac.RDS")
+gee_t_num <- readRDS("MODELOS/gee_t_num.RDS")
 
-Asociación entre las respuestas
-Tiempo como factor
+```
+
+```{r,results='asis'}
+list(gee_t_fac,gee_t_num)%>%texreg::knitreg(single.row=TRUE,
+                                            custom.model.names=c('Factor','Numérico'),
+                                            custom.coef.names=c('Inicio','2017','2018','2019','Tiempo'))
+```
+
 ---
 <h1>.morado[Modelo aditivo]</h1>
 
