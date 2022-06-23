@@ -1,6 +1,6 @@
 ---
-title: "Determinantes sociales de la Salud Mental"
-subtitle: "Exploración longitudinal a los puntajes PHQ-9"
+title: "Determinantes sociales de la Sintomatología Depresiva"
+subtitle: "Exploración longitudinal a los puntajes PHQ-9 en ELSOC"
 author: "C. Delgado G."
 date: "24 Junio 2022"
 output:
@@ -59,25 +59,30 @@ La OMS (2017) caracteriza los trastornos depresivos por sentimientos de tristeza
 
 En **.verde[Chile]** Markkula et. al (2017) estimaban que la prevalencia en el país de un episodio depresivo mayor durante los últimos 12 meses llegaba al 20.5% en 2003 y 18.4% en 2010.
 
+ENS (2018) estimaba que la prevalencia de depresión (criterios clínicos presentes alguna vez en la vida) llegaba a 11.1%
+
 ---
 <h1>.verde[Depresión v/s Sintomatología Depresiva]</h1>
 
-Actualmente el diagnóstico de depresión usa de referencia el manual DSM-IV, donde se caracteriza un episodio depresivo mayor (**EDM**) como una mezcla de 9 síntomas que varía en torno a su severidad y recurrencia. 
+La depresión es un trastorno clínico que requiere de un diagnóstico profesional. 
 
-Hablar de **sintomatología depresiva** en un estudio aplicado a una muestra representativa de la población, sirve como un indicador del **estrés psicosocial** por el cúal atraviesa una comunidad (Jiménez et. al, 2020), y al mismo tiempo, permite identificar desigualdades sociales en la forma de experimentar dicho malestar.
+Hablar de **sintomatología depresiva** es hablar de una mezcla de síntomas que difieren en su presencia e intensidad.
+
+Estudiar la sintomatología depresiva en un estudio representativo de una población, sirve como un indicador del **estrés psicosocial** por el cual atraviesa una comunidad (Jiménez et. al, 2020), y al mismo tiempo, nos permite identificar desigualdades sociales en la forma de experimentar dicho malestar.
 
 ---
 <h1>.verde[Motivación de la investigación]</h1>
 
-¿De qué manera los distintos contextos en los que se desenvuelven las personas afecta el punto de partida y las trayectorias en el tiempo de su sintomatología depresiva?
+¿De qué manera los distintos contextos en los que se desenvuelven las personas afecta su manera de experimentar su sintomatología depresiva?
 
-¿En qué momento es más visible el impacto de las desigualdades sociales en salud mental?
-
-Necesitamos una herramienta para medir la sintomatología depresiva: Patient Health Questionnaire0 (**PHQ-9**). Es un instrumento pensado con el doble propósito de poder detectar un episodio depresivo mayor, y al mismo tiempo, servir como indicador de la severidad de la sintomatología depresiva de las personas (Kroenke et. al, 2001). 
+¿Las desigualdades sociales en salud mental son más visibles en el punto de partida o en la manera de experimentar la sintomatología a lo largo del tiempo?
 
 ---
-<h1>.morado[Patient Health Questionnaire 9]</h1>
+<h1>.morado[¿Cómo medir la sintomatología depresiva?]</h1>
 .pull-left[
+
+Patient Health Questionnaire (**.morado[PHQ-9]**), pensado como indicador de un episodio depresivo mayor (EDM) y medida de severidad de la sintomatología depresiva.
+
 Durante las **.morado[últimas dos semanas]:** 
 
 .center[*¿Qué tan seguido ha tenido molestias debido a los siguientes problemas?*]
@@ -124,8 +129,7 @@ La OMS (2010) reconoce que la salud mental es moldeada por el ambiente social, e
 DSM:
  ¿*Cómo es que la estructura de las sociades a través de interacciones sociales, normas e instituciones afectan la salud de una población*?
 
-Hablamos de **Gradiente Social** en salud para indicar que 
-las personas más desventajadas están en mayor riesgo de padecer un desórden mental y poseen más obstáculos para acceder a un tratamiento.  
+La idea de **Gradiente Social en Salud** (Fisher, Baum, 2010) refiere al hechoque la prevalencia de condiciones de salud física y mental incrementa a medida que bajamos en el espectro socioeconómico, y es más alta en los grupos de menor posición socioeconómica. 
 
 ---
 <h1>.verde[Evidencia empírica DSSM]</h1>
@@ -137,7 +141,7 @@ Su **meta-análisis** reporta que *ingresos bajos*, *desempleo*, *estrés financ
 Alegría et.al (2019): En su revisión de literatura de los DSSM muestran que el *desempleo*, *malas condiciones laborales*, *migración*, *exposición permanente a malas condicionales habitacionales (calefacción, hacinamiento)*, *mala alimentación*, *relaciones familiares negativas*, *historial de abuso*, *falta de apoyo social*, *falta de pertinencia comunitaria*, son factores que reaparecen en las investigaciones empíricas.
 
 ---
-<h1>.verde[Agrupando los DSSM]</h1>
+<h1>.verde[Agrupando los DS de la Salud]</h1>
 
 (WHO, 2010):
 
@@ -156,7 +160,9 @@ Alegría et.al (2019): En su revisión de literatura de los DSSM muestran que el
 * **Biológicos y genéticos**: Comorbilidades de salud física (Obesidad, diabetes, enfermedades cardiovasculares, etc.)
 
 ---
-<h1>.azul[Pregunta de investigación y covariables]</h1>
+<h1>.azul[Hipótesis  y covariables de trabajo]</h1>
+
+El gradiente social en Salud Mental se expresa en: (1) el punto de partida en las chances de estar bajo sospecha de un EDM de acuerdo a la escala PHQ-9. (2) La pendiente de cambio en el tiempo de las chances. Y (3) en el impacto de haber estado bajo sospecha en un tiempo anterior. 
 
 
 * **.azul[Estructurales]**: Género y Nivel Educacional.
