@@ -9,33 +9,48 @@
   </head>
   <body>
     <textarea id="source">
-class: center, middle, inverse, title-slide
 
-.title[
-# Determinantes sociales de la Sintomatología Depresiva
+
+
+.pull-left[
+&lt;h1&gt; .morado[Determinantes sociales de la Sintomatología Depresiva] &lt;/h1&gt;
+
+&lt;h3&gt; .azul[Exploración longitudinal a los puntajes PHQ-9 en ELSOC] &lt;/h3&gt;
+
+**.large[Carlos Delgado G. | Seminario ELSOC | 24 Junio 2022]**
+
 ]
-.subtitle[
-## Exploración longitudinal a los puntajes PHQ-9 en ELSOC
+.pull-right[
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+.center[
+&lt;img src="IMAGENES/coes.jpeg" width="px"/&gt;
 ]
-.author[
-### C. Delgado G.
-]
-.date[
-### 24 Junio 2022
+
 ]
 
 ---
+&lt;h1&gt;.azul[Resumen]&lt;/h1&gt;
 
+Avances proyecto de magíster.
 
+Modelamiento longitudinal de la sospecha de un episodio depresivo mayor. En especial los patrones generales de cambio y qué diferencias grupales pueden encontrarse respecto al cambio en el tiempo. 
 
+La teoría de los determinantes sociales en salud permite identificar grupos de covariables importantes en ELSOC.
 
-&lt;h1&gt;.azul[Introducción]&lt;/h1&gt;
+La regresión logística marginal vía GEE permite estimar el efecto de las covariables en la sospecha de EDM (binaria), tomando en cuenta la correlación entre observaciones. 
 
-Proyecto de investigación de magíster en estadística UC
-
-Determinantes Sociales en la Salud Mental
-
-Modelos marginales vía Generalized Estimating Equations(GEE) para datos longitudinales. 
+Presentación de hoy: Modelo aditivo con 5 predictores para ilustrar el tipo de preguntas que pueden responderse vía GEE.
 
 
 
@@ -49,7 +64,7 @@ La OMS (2017) caracteriza los trastornos depresivos por sentimientos de tristeza
 
 En **.verde[Chile]** Markkula et. al (2017) estimaban que la prevalencia en el país de un episodio depresivo mayor durante los últimos 12 meses llegaba al 20.5% en 2003 y 18.4% en 2010.
 
-ENS (2018) estimaba que la prevalencia de depresión (criterios clínicos presentes alguna vez en la vida) llegaba a 11.1%
+ENS (2018) estimaba que la prevalencia de depresión (criterios clínicos presentes alguna vez en la vida) llegaba al 11.1% en el país.
 
 ---
 &lt;h1&gt;.verde[Depresión v/s Sintomatología Depresiva]&lt;/h1&gt;
@@ -58,20 +73,23 @@ La depresión es un trastorno clínico que requiere de un diagnóstico profesion
 
 Hablar de **sintomatología depresiva** es hablar de una mezcla de síntomas que difieren en su presencia e intensidad.
 
-Estudiar la sintomatología depresiva en un estudio representativo de una población, sirve como un indicador del **estrés psicosocial** por el cual atraviesa una comunidad (Jiménez et. al, 2020), y al mismo tiempo, nos permite identificar desigualdades sociales en la forma de experimentar dicho malestar.
+Estudiar la sintomatología depresiva en un estudio representativo de una población permite pensar sobre el **estrés psicosocial** por el cual atraviesa una comunidad (Jiménez et. al, 2020). 
+
+Al mismo tiempo, nos permite identificar desigualdades sociales en la forma de experimentar dicho malestar.
 
 ---
+
 &lt;h1&gt;.verde[Motivación de la investigación]&lt;/h1&gt;
 
-¿De qué manera los distintos contextos en los que se desenvuelven las personas afecta su manera de experimentar su sintomatología depresiva?
-
-¿Las desigualdades sociales en salud mental son más visibles en el punto de partida o en la manera de experimentar la sintomatología a lo largo del tiempo?
+&lt;br&gt;
+&lt;br&gt;
+.center[¿De qué manera los distintos contextos en los que se desenvuelven las personas afectan sus maneras de experimentar la sintomatología depresiva?]
+&lt;br&gt;
+.center[¿Las desigualdades sociales en salud mental son más visibles en el punto de partida o en la manera que la sintomatología depresiva cambia a lo largo del tiempo?]
 
 ---
-&lt;h1&gt;.morado[¿Cómo medir la sintomatología depresiva?]&lt;/h1&gt;
+&lt;h1&gt;.morado[Patient Health Questionnaire 9]&lt;/h1&gt;
 .pull-left[
-
-Patient Health Questionnaire (**.morado[PHQ-9]**), pensado como indicador de un episodio depresivo mayor (EDM) y medida de severidad de la sintomatología depresiva.
 
 Durante las **.morado[últimas dos semanas]:** 
 
@@ -86,45 +104,35 @@ Durante las **.morado[últimas dos semanas]:**
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt; Sintoma &lt;/th&gt;
-   &lt;th style="text-align:center;"&gt; Código &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
 &lt;tbody&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Poco interés &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; s01 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Decaído(a) &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; s02 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Dificultad de sueño &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; s03 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Con poca energía &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; s04 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Problemas de apetito &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; s05 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Se ha sentido mal consigo mismo &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; s06 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Dificultad concentración &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; s07 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Muy lento o demasiado agitado &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; s08 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Ideación suicida &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; s09 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -151,7 +159,7 @@ La OMS (2010) reconoce que la salud mental es moldeada por el ambiente social, e
 DSM:
  ¿*Cómo es que la estructura de las sociades a través de interacciones sociales, normas e instituciones afectan la salud de una población*?
 
-La idea de **Gradiente Social en Salud** (Fisher, Baum, 2010) refiere al hechoque la prevalencia de condiciones de salud física y mental incrementa a medida que bajamos en el espectro socioeconómico, y es más alta en los grupos de menor posición socioeconómica. 
+La idea de **Gradiente Social en Salud** (Fisher, Baum, 2010) refiere al hecho que la prevalencia de condiciones de salud física y mental incrementa a medida que bajamos en el espectro socioeconómico, y es más alta en los grupos de menor posición socioeconómica. 
 
 ---
 &lt;h1&gt;.verde[Evidencia empírica DSSM]&lt;/h1&gt;
@@ -167,35 +175,44 @@ Alegría et.al (2019): En su revisión de literatura de los DSSM muestran que el
 
 (WHO, 2010):
 
-* **Determinates estructurales**: Contexto socioeconómico y político de un país  (Políticas macroeconómicas, Mercado laboral, valores culturales)
+* **Determinates estructurales**: 
+  * Contexto socioeconómico y político de un país  (Políticas macroeconómicas, Mercado laboral, valores culturales).
+
 * **Determinantes intermediarios**:
   * Circunstancias materiales: Vivienda, trabajo, alimentación.
   * Comportamientos y factores biológicos: Nutrición, Actividad Física, consumo de sustancias, factores genéticos
   * Factores sicosociales: Estresores, apoyo social. 
+  
+Otras propuestas en (Braverman, 2010), (Alegría et al, 2019).
 ---
-&lt;h1&gt;.verde[Determinantes sociales de la Salud IV]&lt;/h1&gt;
+&lt;h1&gt;.verde[Propuesta de determinantes sociales de la salud mental]&lt;/h1&gt;
 
-* **Factores estructurales**: Ingreso, educación, condiciones de vivienda y trabajo, género, etnicidad. 
-* **Condiciones materiales**: Acceso a servicios, alimentos nutritivos, lugares seguros para ejercitar, confianza y seguridad del barrio, crimen y violencia, ambiente natural de la vivienda.
-* **Comunitarias**: Apoyo social, redes y capital social
-* **Comportamiento**:  Actividad física, alimentacion saludable, estatus social-autopercibido, sensacion de control
-* **Biológicos y genéticos**: Comorbilidades de salud física (Obesidad, diabetes, enfermedades cardiovasculares, etc.)
+**Factores estructurales**: Ingreso, educación, condiciones de vivienda y trabajo, género, etnia. 
+
+**Condiciones materiales del entorno**: Disponibilidad de servicios, alimentos nutritivos, lugares seguros para ejercitar en su barrio, crimen, violencia y seguridad en el barrio, áreas verdes y edificaciones en el entorno de la vivienda.
+
+**Comunitarias**: Apoyo social, redes y capital social, participación en la comunidad. 
+
+**Comportamiento**:  Actividad física, alimentación saludable, estatus social auto percibido, sensación de control sobre su vida.
+
+**Biológicos y genéticos**: Comorbilidades de salud física (Obesidad, diabetes, enfermedades cardiovasculares, etc.).
 
 ---
 &lt;h1&gt;.azul[Hipótesis  y covariables de trabajo]&lt;/h1&gt;
 
 El gradiente social en Salud Mental se expresa en: (1) el punto de partida en las chances de estar bajo sospecha de un EDM de acuerdo a la escala PHQ-9. (2) La pendiente de cambio en el tiempo de las chances. Y (3) en el impacto de haber estado bajo sospecha en un tiempo anterior. 
 
+Covariables:
 
-* **.azul[Estructurales]**: Género y Nivel Educacional.
-* **.azul[Comportamiento]**: Frecuencia de actividad física.
-* **.azul[Comunitario]**: Apoyo social percibido.
-* **.azul[Biológicos]**: Índice de Masa Corporal.
-
+*   **.azul[Estructurales]**: Género y Nivel Educacional.
+*   **.azul[Comportamiento]**: Frecuencia de actividad física.
+*   **.azul[Comunitario]**: Apoyo social percibido.
+*   **.azul[Biológicos]**: Índice de Masa Corporal.
 ---
 
 &lt;h1&gt;.azul[Sospecha EDM según género]&lt;/h1&gt;
 &lt;iframe src='GRAFICOS/s10_sexo_ola.html' width="100%" height="400" id="igraph" scrolling="no" seamless="seamless" frameBorder="0"&gt; &lt;/iframe&gt;
+
 ---
 
 &lt;h1&gt;.azul[Sospecha EDM según nivel educacional]&lt;/h1&gt;
