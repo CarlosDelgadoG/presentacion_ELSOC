@@ -280,7 +280,7 @@ list(gee_t_fac,gee_t_num)%>%texreg::knitreg(single.row=TRUE,
 * ¿Cómo ciertas subpoblaciones cambian sistemáticamente a lo largo del tiempo?
 * ¿Cómo ciertas subpoblaciones reaccionan de distinta manera a episodios previos de sospecha de EDM
 
-(2) El gradiente social está presente en el punto inicial o en el intercepto de las distintas subpoblaciones, pero puede que se alivie con el tiempo, ocurriendo una *regresión a la media*.
+(2) El gradiente social está presente en el punto inicial o en el intercepto de las distintas subpoblaciones, pero los grupos que estaban mejor en el punto inicial empeoran más rápido que el resto. 
 
 ---
 class: center, middle
