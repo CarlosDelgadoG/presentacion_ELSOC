@@ -275,8 +275,27 @@ list(gee_t_fac,gee_t_num)%>%texreg::knitreg(single.row=TRUE,
 ---
 <h1>.verde[Comentarios y conclusiones]</h1>
 
-1) Es posible pensar la influencia del tiempo en la salud mental de distintas maneras: 
+(1) Los modelos marginales (y mixtos) nos permiten pensar la influencia del tiempo en la salud mental de distintas maneras:
+
 * ¿Cómo ciertas subpoblaciones cambian sistemáticamente a lo largo del tiempo?
 * ¿Cómo ciertas subpoblaciones reaccionan de distinta manera a episodios previos de sospecha de EDM
 
-2) El gradiente social está presente en el punto inicial, quizás tienda a desaparecer con el tiempo, y puede que ocurra una *regresión a la media*.
+(2) El gradiente social está presente en el punto inicial o en el intercepto de las distintas subpoblaciones, pero puede que se alivie con el tiempo, ocurriendo una *regresión a la media*.
+
+---
+class: center, middle
+<h1> .azul[¡Muchísimas gracias!] </h1>
+
+<h1> .morado[Contacto] </h1>
+.pull-left[
+
+Carlos Delgado González 
+
+Sociólogo UCH, Diplomado Estadística Aplicada UDEC, Mg (c) Estadística UC
+]
+
+.pull-right[
+carlo.delgado@mat.uc.cl
+]
+
+.footnote[[El repositorio de la presentación está en Github!](https://github.com/CarlosDelgadoG/PRE-ALAS-Variaciones-LG-SD)]
